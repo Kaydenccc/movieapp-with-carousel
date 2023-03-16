@@ -1,91 +1,63 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+import Image from 'next/image';
+import { Inter } from 'next/font/google';
+import Navbar from '@/components/Navbar';
+import Button from '@/components/Button';
+import Navigation from '@/components/Navigation';
+import ButtonPlus from '@/components/ButtonPlus';
+import Card from '@/components/Card';
+import CardLanscap from '@/components/CardLanscap';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
+    <main className="max-w-3xl  space-y-6 my-8 mx-auto">
+      <Navbar />
+      <header className="relative">
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          alt="thumbnil"
+          src={'https://occ-0-6715-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABdVozig2u8iR0NKqtv2lR888eLN6X8Exwx0wUT1zMMYAuRqc5x3oBq63k5SfbNvwnDRKBUhx-e21qjVNRlCu7lmAZpKIr15QARY.jpg?r=d58'}
+          width={768}
+          height={200}
         />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
+        <div className="absolute top-0 left-0 w-full h-full text-white">
+          <div className="flex flex-col space-y-2 justify-end w-full h-full p-12">
+            <p>SEASON 10</p>
+            <h1 className="text-5xl font-bold">SUPRANATURAL</h1>
+            <p>AHAHA, HAHAHA, HAHAA</p>
+            <div className="flex items-center gap-2">
+              <Button text={'Watch Now'} />
+              <ButtonPlus />
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </header>
+      <Navigation text="Now Playing" />
+      <section className="flex overflow-x-auto">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </section>
+      <Navigation text="Top Rated Movies" />
+      <section className=" flex overflow-x-auto">
+        <CardLanscap />
+        <CardLanscap />
+        <CardLanscap />
+        <CardLanscap />
+        <CardLanscap />
+        <CardLanscap />
+        <CardLanscap />
+        <CardLanscap />
+        <CardLanscap />
+      </section>
     </main>
-  )
+  );
 }
