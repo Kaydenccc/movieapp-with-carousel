@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
@@ -6,7 +7,14 @@ import Navigation from '@/components/Navigation';
 import ButtonPlus from '@/components/ButtonPlus';
 import Card from '@/components/Card';
 import CardLanscap from '@/components/CardLanscap';
-
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation as Nvv } from 'swiper';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/swiper.css';
+import 'swiper/css/navigation';
+import { useEffect } from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
@@ -33,30 +41,56 @@ export default function Home() {
         </div>
       </header>
       <Navigation text="Now Playing" />
-      <section className="flex overflow-x-auto">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <section className=" flex overflow-x-auto">
+        <Swiper navigation={true} modules={[Nvv]} className="mySwiper" spaceBetween={20} slidesPerView={3.5} onSlideChange={() => console.log('slide change')} onSwiper={(swiper) => console.log(swiper)}>
+          <SwiperSlide>
+            <Card />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Card />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Card />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Card />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Card />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Card />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Card />
+          </SwiperSlide>
+        </Swiper>
       </section>
       <Navigation text="Top Rated Movies" />
       <section className=" flex overflow-x-auto">
-        <CardLanscap />
-        <CardLanscap />
-        <CardLanscap />
-        <CardLanscap />
-        <CardLanscap />
-        <CardLanscap />
-        <CardLanscap />
-        <CardLanscap />
-        <CardLanscap />
+        <Swiper className="mySwiper" spaceBetween={10} slidesPerView={3} onSlideChange={() => console.log('slide change')} onSwiper={(swiper) => console.log(swiper)}>
+          <SwiperSlide>
+            <CardLanscap />
+          </SwiperSlide>
+          <SwiperSlide>
+            <CardLanscap />
+          </SwiperSlide>
+          <SwiperSlide>
+            <CardLanscap />
+          </SwiperSlide>
+          <SwiperSlide>
+            <CardLanscap />
+          </SwiperSlide>
+          <SwiperSlide>
+            <CardLanscap />
+          </SwiperSlide>
+          <SwiperSlide>
+            <CardLanscap />
+          </SwiperSlide>
+          <SwiperSlide>
+            <CardLanscap />
+          </SwiperSlide>
+        </Swiper>
       </section>
     </main>
   );
