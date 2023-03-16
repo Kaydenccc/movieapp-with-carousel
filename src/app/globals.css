@@ -24,3 +24,16 @@
   height: 100%;
   object-fit: cover;
 }
+
+.swiper,
+.swiper-container {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column-reverse;
+}

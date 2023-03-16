@@ -8,16 +8,28 @@ import ButtonPlus from '@/components/ButtonPlus';
 import Card from '@/components/Card';
 import CardLanscap from '@/components/CardLanscap';
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation as Nvv } from 'swiper';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Navigation as Nvv, Pagination, A11y } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/swiper.css';
 import 'swiper/css/navigation';
-import { useEffect } from 'react';
+import { useState } from 'react';
+import Navigation2 from '@/components/Navigation2';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  const [currentIndex, setIndex] = useState<number>(0);
+  const [currentIndex2, setIndex2] = useState<number>(0);
+
+  const getIndex = (index: number) => {
+    setIndex(index);
+  };
+  const getIndex2 = (index: number) => {
+    setIndex2(index);
+  };
+
+  console.log(currentIndex);
   return (
     <main className="max-w-3xl  space-y-6 my-8 mx-auto">
       <Navbar />
@@ -40,9 +52,9 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <Navigation text="Now Playing" />
       <section className=" flex overflow-x-auto">
-        <Swiper navigation={true} modules={[Nvv]} className="mySwiper" spaceBetween={20} slidesPerView={3.5} onSlideChange={() => console.log('slide change')} onSwiper={(swiper) => console.log(swiper)}>
+        <Swiper modules={[A11y, Nvv, Pagination]} className="mySwiper" spaceBetween={20} slidesPerView={3.5} onSlideChange={(swiper) => getIndex(swiper.activeIndex)} onSwiper={(swiper) => getIndex(swiper.activeIndex)}>
+          <Navigation index={currentIndex} text="Now Playing" />
           <SwiperSlide>
             <Card />
           </SwiperSlide>
@@ -66,9 +78,9 @@ export default function Home() {
           </SwiperSlide>
         </Swiper>
       </section>
-      <Navigation text="Top Rated Movies" />
       <section className=" flex overflow-x-auto">
-        <Swiper className="mySwiper" spaceBetween={10} slidesPerView={3} onSlideChange={() => console.log('slide change')} onSwiper={(swiper) => console.log(swiper)}>
+        <Swiper className="mySwiper" spaceBetween={10} slidesPerView={3} onSlideChange={(swiper) => getIndex2(swiper.activeIndex)} onSwiper={(swiper) => getIndex2(swiper.activeIndex)}>
+          <Navigation2 index2={currentIndex2} text="Top Rated Movies" />
           <SwiperSlide>
             <CardLanscap />
           </SwiperSlide>
